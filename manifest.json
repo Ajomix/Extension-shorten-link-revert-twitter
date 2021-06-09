@@ -1,0 +1,38 @@
+{
+    "name": "shorten-Link",
+    "icons": {
+      	"16": "icon.png",
+           "48": "icon.png",
+          "128": "icon.png"
+    },
+    "version": "1.0",
+    "description": "shorten-Link",
+    "permissions": [
+      "<all_urls>",
+      "storage",
+      "contextMenus"
+    ],
+  
+    "background": {
+      "scripts": [
+          "util/axios.js",
+           "util/interactionWithAPI.js",
+          "util/interactionWithUser.js",
+          "background/background.js"
+      ],
+      "persistent": true
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": [
+            "client/content.js"
+      ]
+    }],
+    "browser_action": {
+        "default_popup": "client/options/popup.html",
+        "default_title": "Options"
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.youtube.com/ https://apis.google.com/; object-src 'self'",
+    "manifest_version": 2
+  }
+  
